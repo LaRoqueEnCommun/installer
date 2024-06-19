@@ -1,11 +1,11 @@
 ---
 app_name: consul
-#domain: your_domain.com
+domain: construire.laroqueencommun.fr
 
 server_hostname: "{{ domain | default(ansible_default_ipv4.address) }}"
 
 # Server Timezone
-timezone: Europe/Madrid
+timezone: Europe/Paris
 
 # Consul Democracy Timezone
 application_timezone: "{{ timezone }}"
@@ -13,7 +13,7 @@ application_timezone: "{{ timezone }}"
 # General settings
 env: production
 deploy_user: deploy
-deploy_group: wheel
+deploy_group: sudo
 home_dir: "/home/{{ deploy_user }}"
 consul_dir: "{{ home_dir }}/{{ app_name }}"
 shared_dir: "{{ consul_dir }}/shared"
@@ -46,15 +46,15 @@ puma_access_log: "{{ shared_dir }}/log/puma_access.log"
 puma_error_log: "{{ shared_dir }}/log/puma_error.log"
 
 #SMTP
-smtp_address:        "smtp.example.com"
+smtp_address:        "mail.gandi.net"
 smtp_port:           25
 smtp_domain:         "your_domain.com"
-smtp_user_name:      "username"
-smtp_password:       "password"
+smtp_user_name:      "contact@laroqueencommun.fr"
+smtp_password:       "l'AvenirEnCommune2026!"
 smtp_authentication: "plain"
 
 #LetsEncrypt
-#letsencrypt_email: "your_email@example.com"
+letsencrypt_email: "contact@laroqueencommun.fr"
 
 # Node.js
 fnm_dir: "{{ home_dir }}/.fnm"
